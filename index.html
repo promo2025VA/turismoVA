@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Abecia - Cultura, Turismo y Tradición</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y estilos base */
+        :root {
+            --primary: #2e7d32;
+            --secondary: #1b5e20;
+            --accent: #ff9800;
+            --light: #f1f8e9;
+            --dark: #1b5e20;
+            --text: #333;
+            --gray: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .language-selector {
+            position: relative;
+        }
+        
+        .language-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            min-width: 150px;
+            display: none;
+            z-index: 10;
+        }
+        
+        .language-options.active {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .language-option:hover {
+            background: var(--light);
+        }
+        
+        .language-option.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            /*background: linear-gradient(rgba(43, 108, 47, 0.8), rgba(27, 94, 32, 0.9)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');*/
+            background: linear-gradient(rgba(171, 223, 175, 0.8), rgba(27, 94, 32, 0.9)), url('.//imagenes/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #f57c00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+        }
+        
+        /* Secciones */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 25%;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Cultura */
+        .culture {
+            background-color: white;
+        }
+        
+        .culture-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .culture-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .culture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .culture-img {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .culture-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .culture-card:hover .culture-img img {
+            transform: scale(1.05);
+        }
+        
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .culture-img:hover .img-overlay {
+            transform: translateY(0);
+        }
+        
+        .img-overlay h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .culture-info {
+            padding: 1.8rem;
+        }
+        
+        .culture-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .culture-info p {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Turismo */
+        .tourism {
+            background-color: #f1f8e9;
+        }
+        
+        .tourism-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .tourism-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .tourism-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tourism-img {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tourism-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .tourism-info {
+            padding: 1.5rem;
+        }
+        
+        .tourism-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        /* Tradiciones */
+        .traditions {
+            background-color: white;
+        }
+        
+        .traditions-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .tradition-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .tradition-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tradition-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .tradition-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Galería */
+        .gallery {
+            background-color: #f1f8e9;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background-color: #e9ecef;
+        }
+        
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Videos */
+        .videos {
+            background-color: white;
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        /* Contacto */
+        .contact {
+            background-color: #f1f8e9;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3.5rem;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1.8rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-details p {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+        }
+        
+        .contact-details i {
+            color: var(--secondary);
+            width: 20px;
+            margin-top: 3px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(43, 108, 47, 0.4);
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 4rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.9rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            width: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            nav ul {
+                gap: 1.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                padding: 1rem 0;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3.5rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 3.5rem 0;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .culture-content,
+            .tourism-grid,
+            .traditions-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-img">
+                        VILLA<br>ABECIA
+                    </div>
+                    <div class="logo-text">
+                        <h1 data-lang="es">Villa Abecia</h1>
+                        <h1 data-lang="en" style="display:none">Villa Abecia</h1>
+                        <p data-lang="es">Cultura, Turismo y Tradición</p>
+                        <p data-lang="en" style="display:none">Culture, Tourism and Tradition</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-language">Español</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-options">
+                            <div class="language-option active" data-lang="es">
+                                <i class="fas fa-check"></i>
+                                Español
+                            </div>
+                            <div class="language-option" data-lang="en">
+                                English
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#inicio" data-lang="es">Inicio</a><a href="#inicio" data-lang="en" style="display:none">Home</a></li>
+                            <li><a href="#cultura" data-lang="es">Gastronomia</a><a href="#cultura" data-lang="en" style="display:none">Gastronomy</a></li>
+                            <li><a href="#turismo" data-lang="es">Itinerario</a><a href="#turismo" data-lang="en" style="display:none">Itinerary</a></li>
+                            <li><a href="#tradiciones" data-lang="es">Tradiciones</a><a href="#tradiciones" data-lang="en" style="display:none">Traditions</a></li>
+                            <li><a href="#galeria" data-lang="es">Turismo</a><a href="#galeria" data-lang="en" style="display:none">Tourism</a></li>
+                            <li><a href="#videos" data-lang="es">Videos</a><a href="#videos" data-lang="en" style="display:none">Videos</a></li>
+                            <li><a href="#contacto" data-lang="es">Contacto</a><a href="#contacto" data-lang="en" style="display:none">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2 data-lang="es">DESCUBRE VILLA ABECIA</h2>
+            <h2 data-lang="en" style="display:none">DISCOVER VILLA ABECIA</h2>
+            <p data-lang="es">Descubre la esencia de Villa Abecia, un rincon donde la tradicion se encuentra con la tecnologia</p>
+            <p data-lang="en" style="display:none">Discover the essence of Villa Abecia, a place where tradition meets technology</p>
+            <a href="#cultura" class="btn" data-lang="es">Explorar</a>
+            <a href="#cultura" class="btn" data-lang="en" style="display:none">Explore</a>
+        </div>
+    </section>
+
+    <!-- Cultura -->
+    <section id="cultura" class="culture">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">EL GUSTO DE NUSTRA TIERRA</h2>
+                <h2 data-lang="en" style="display:none">THE TASTE OF OUR LAND</h2>
+                <p data-lang="es">Conoce la rica herencia cultural que define nuestra identidad</p>
+                <p data-lang="en" style="display:none">Discover the rich cultural heritage that defines our identity</p>
+            </div>
+            <div class="culture-content">
+                <div class="culture-card">
+                    <div class="culture-img">
+                        <img src=".\\imagenes\vinos1.jpeg" alt="Comidas locales">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">Vitivinicultura</h4>
+                            <h4 data-lang="en" style="display:none">viticulture</h4>
+                            <p data-lang="es">Entre viñas y montañas</p>
+                            <p data-lang="en" style="display:none">Between vineyards and mountains</p>
+                        </div>
+                    </div>
+                    <div class="culture-info">
+                        <h3 data-lang="es">Vinos artesaneles</h3>
+                        <h3 data-lang="en" style="display:none">Artisan wines</h3>
+                        <p data-lang="es">Los vinos de Villa Abecia representan el orgullo y la tradición de nuestra tierra. Producidos en un valle cálido y fértil, combinan técnicas artesanales con el cuidado de nuestras familias viticultoras. Su sabor único refleja la riqueza del suelo, el clima y la pasión de la gente villabicense, que desde hace generaciones transforma la uva en una bebida que expresa identidad, cultura y calidad. Cada copa de vino de Villa Abecia es una muestra del esfuerzo, la dedicación y el amor por nuestra comunidad. </p>
+                        <p data-lang="en" style="display:none">The wines of Villa Abecia represent the pride and tradition of our land. Produced in a warm and fertile valley, they combine artisanal techniques with the care of our winemaking families. Their unique flavor reflects the richness of the soil, the climate, and the passion of the people of Villa Abecia, who for generations have transformed grapes into a beverage that expresses identity, culture, and quality. Every glass of Villa Abecia wine is a testament to the effort, dedication, and love for our community.</p>
+                    </div>
+                </div>
+                <div class="culture-card">
+                    <div class="culture-img">
+                        <img src=".\\imagenes\plato3.jpg" alt="Vitivinicultura">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">Gastronomia</h4>
+                            <h4 data-lang="en" style="display:none">Gastronomy</h4>
+                            <p data-lang="es">El sabor de nuestra tierra</p>
+                            <p data-lang="en" style="display:none">Traditional dishes of the region</p>
+                        </div>
+                    </div>
+                    <div class="culture-info">
+                        <h3 data-lang="es">Platos tradicionales</h3>
+                        <h3 data-lang="en" style="display:none">Traditional dishes</h3>
+                        <p data-lang="es">La gastronomía de Villa Abecia es una expresión viva de su identidad cultural y de la riqueza de su tierra cinteña. Formada por valiosas tradiciones transmitidas de generación en generación, combina el sabor de los productos locales —frutas, hortalizas y carnes— con el toque artesanal heredado de las familias Villabienses. En los hogares y recintos alimenticios del pueblo se conservan recetas tradicionales como el ají de pelado, el cabrito al horno, el picante de gallina, el asado de chancho, los misquinchos fritos y los jamones ahumados, todos acompañados por un buen vino o una refrescante chicha. La mujer cinteña, reconocida por su amabilidad y talento culinario, es la guardiana de esta herencia gastronómica que convierte cada plato en un encuentro con el sabor, la historia y el espíritu hospitalario de Villa Abecia.</p>
+                        <p data-lang="en" style="display:none">The gastronomy of Villa Abecia is a living expression of its cultural identity and the richness of its Cinti region. Formed by valuable traditions passed down through generations, it combines the flavor of local products—fruits, vegetables, and meats—with the artisanal touch inherited from the families of Villa Abecia. In the homes and restaurants of the town, traditional recipes such as ají de pelado (a spicy chicken stew), roast kid, spicy chicken, roast pork, fried misquinchos (a type of fish), and smoked hams are preserved, all accompanied by a good wine or a refreshing chicha (a fermented corn beverage). The women of Cinti, renowned for their kindness and culinary talent, are the guardians of this gastronomic heritage, transforming each dish into an encounter with the flavor, history, and hospitable spirit of Villa Abecia.</p>
+                    </div>
+                </div>
+                <div class="culture-card">
+                    <div class="culture-img">
+                        <img src=".\\imagenes\chicha1.jpeg" alt="Gastronomía local">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">Fermentologia tradicional</h4>
+                            <h4 data-lang="en" style="display:none">Traditional fermentology</h4>
+                            <p data-lang="es">Un sorbo de historia que une generaciones.</p>
+                            <p data-lang="en" style="display:none">A sip of history that unites generations.</p>
+                        </div> 
+                    </div>
+                    <div class="culture-info">
+                        <h3 data-lang="es">Bebida tradicional</h3>
+                        <h3 data-lang="en" style="display:none">Traditional drink</h3>
+                        <p data-lang="es">La chicha villabicense es una bebida tradicional que representa la identidad y la historia de Villa Abecia. Elaborada de manera artesanal, generalmente a base de maíz fermentado, su preparación se transmite de generación en generación, conservando los secretos y técnicas heredadas de padres a hijos y de madres a hijas. Su sabor suave y característico acompaña los platos típicos del pueblo, se comparte en fiestas, celebraciones y encuentros comunitarios. La chicha no solo es una bebida, sino un símbolo de hospitalidad, tradición y la esencia gastronómica villabicense.</p>
+                        <p data-lang="en" style="display:none">Chicha from Villa Abecia is a traditional beverage that embodies the identity and history of the town. Made using traditional methods, typically from fermented corn, its preparation is passed down through generations, preserving the secrets and techniques inherited from fathers to sons and mothers to daughters. Its smooth and distinctive flavor complements the town's typical dishes and is shared at festivals, celebrations, and community gatherings. Chicha is not just a drink, but a symbol of hospitality, tradition, and the very essence of Villa Abecia's culinary heritage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Turismo -->
+    <section id="turismo" class="tourism">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">ATRACTIVOS TURISTICOS CULTURALES PROGRAMADOS</h2>
+                <h2 data-lang="en" style="display:none">TOURIST ATTRACTIONS SCHEDULED CULTURAL EVENTS </h2>
+                <p data-lang="es">Momentos imperdibles de Villa Abecia y sus alrededores.</p>
+                <p data-lang="en" style="display:none">Unmissable moments in Villa Abecia and its surroundings.</p>
+            </div>
+            <div class="tourism-grid">
+                <div class="tourism-card">
+                    <div class="tourism-img">
+                        <img src=".//imagenes/carnaval.jpeg" alt="Carnaval">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">Carnaval</h4>
+                            <h4 data-lang="en" style="display:none">Carnival</h4>
+                            <p data-lang="es">Mas que un momento</p>
+                            <p data-lang="en" style="display:none">More than a moment</p>
+                        </div>
+                    </div>
+                    <div class="tourism-info">
+                        <h3 data-lang="es">El carnaval de tus sueños</h3>
+                        <h3 data-lang="en" style="display:none">Colonial Church</h3>
+                        <p data-lang="es">El Carnaval de tus Sueños de Villa Abecia es una fiesta de seis días continuos en el valle de los Cintis donde tradición, uvas, vino, música y comparsas se unen para celebrar la identidad de los villabicenses. Arranca con el Jueves de Comadres, sigue con cortejos, vendimia, pisa de uva, corsos y juegos con agua, y culmina con la chamullada y la ch’alla en las calles del pueblo. Es una invitación a gozar, bailar y compartir en comunidad, rodeados del sabor de la tierra y la hospitalidad de Villa Abecia.</p>
+                        <p data-lang="en" style="display:none">The Carnival of Your Dreams in Villa Abecia is a six-day celebration in the Cintis Valley where tradition, grapes, wine, music, and dance troupes come together to celebrate the identity of the people of Villa Abecia. It begins with Comadres Thursday, continues with processions, the grape harvest, grape stomping, parades, and water games, and culminates with the traditional "chamullada" and the offering of the ch'alla (a ritual offering) in the town's streets. It's an invitation to enjoy, dance, and share with the community, surrounded by the flavors of the land and the hospitality of Villa Abecia.</p>
+                    </div>
+                </div>
+                <div class="tourism-card">
+                    <div class="tourism-img">
+                        <img src=".//imagenes/virgen1.jpeg" alt="Mirador natural">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">Patrona Virgen del Rosario</h4>
+                            <h4 data-lang="en" style="display:none">Patron Saint Virgin of the Rosary</h4>
+                            <p data-lang="es">Vistas panorámicas del valle</p>
+                            <p data-lang="en" style="display:none">Panoramic views of the valley</p>
+                        </div>
+                    </div>
+                    <div class="tourism-info">
+                        <h3 data-lang="es">Patrona Virgen del Rosario</h3>
+                        <h3 data-lang="en" style="display:none">Patron Saint Virgin of the Rosary</h3>
+                        <p data-lang="es">La celebración en honor a la Virgen del Rosario, patrona de Villa Abecia, se realiza todos los años el primer domingo de octubre y está marcada por una novena de preparación, procesión con lluvias de pétalos de rosas, misas solemnes y participación de peregrinos que llegan de diversas comunidades.  Esta festividad representa la fe y tradición de los villabicenses, fusionando devoción religiosa, arte y cultura local en una de las expresiones más importantes del municipio.</p>
+                        <p data-lang="en" style="display:none">The celebration in honor of Our Lady of the Rosary, patron saint of Villa Abecia, takes place every year on the first Sunday of October and is marked by a nine-day novena of preparation, a procession with showers of rose petals, solemn masses, and the participation of pilgrims from various communities. This festival represents the faith and tradition of the people of Villa Abecia, blending religious devotion, art, and local culture into one of the most important expressions of the municipality.</p>
+                    </div>
+                </div>
+                <div class="tourism-card">
+                    <div class="tourism-img">
+                        <img src=".//imagenes/villa1.jpeg" alt="23 de Marzo">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">Aniversario de Villa Abecia</h4>
+                            <h4 data-lang="en" style="display:none">Anniversary of Villa Abecia</h4>
+                            <p data-lang="es">tradicion y civismo</p>
+                            <p data-lang="en" style="display:none">tradicion y civismo</p>
+                        </div>
+                    </div>
+                    <div class="tourism-info">
+                        <h3 data-lang="es">Aniversario de Villa Abecia</h3>
+                        <h3 data-lang="en" style="display:none">Anniversary of Villa Abecia</h3>
+                        <p data-lang="es">El 23 de marzo es una fecha de doble celebración para los villabicenses, ya que se conmemora el aniversario de Villa Abecia y del Colegio 23 de Marzo, institución educativa emblemática de la comunidad. En este día, el pueblo se viste de fiesta con actos cívicos, desfiles, presentaciones artísticas y actividades culturales que reflejan el orgullo, la historia y la identidad villavicense. Es una jornada para rendir homenaje a las generaciones que han contribuido al desarrollo del municipio y a la formación de jóvenes comprometidos con su tierra. Más que una fecha conmemorativa, el 23 de marzo simboliza la unidad, la educación y el amor por Villa Abecia, tierra de tradiciones, cultura y progreso.</p>
+                        <p data-lang="en" style="display:none">March 23rd is a day of double celebration for the residents of Villa Abecia, as it commemorates both the anniversary of Villa Abecia itself and the anniversary of Colegio 23 de Marzo, an emblematic educational institution in the community. On this day, the town comes alive with civic ceremonies, parades, artistic performances, and cultural activities that reflect the pride, history, and identity of Villa Abecia. It is a day to pay tribute to the generations that have contributed to the development of the municipality and to the formation of young people committed to their land. More than just a commemorative date, March 23rd symbolizes unity, education, and love for Villa Abecia, a land of traditions, culture, and progress.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tradiciones -->
+    <section id="tradiciones" class="traditions">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">TRADICIONES Y FESTIVIDADES</h2>
+                <h2 data-lang="en" style="display:none">TRADITIONS AND FESTUVITIES</h2>
+                <p data-lang="es">Celebraciones que mantienen viva nuestra identidad cultural</p>
+                <p data-lang="en" style="display:none">Celebrations that keep our cultural identity alive</p>
+            </div>
+            <div class="traditions-content">
+                <div class="tradition-card">
+                    <div class="tradition-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 data-lang="es">Sikus</h3>
+                    <h3 data-lang="en" style="display:none">Sikus</h3>
+                    <p data-lang="es">La banda de sikus de Villa Abecia  es una expresión musical ancestral que acompaña las fiestas y procesiones de Villa Abecia, desde la Virgen del Rosario hasta la Fiesta de la Cruz y el Carnaval; sus melodías de zampoña (siku) llenan las calles y anuncios de celebración, reuniendo a comunidades como Jailia y Colpanayoc en demostraciones y procesiones. Estas agrupaciones, además de entretener, conservan saberes musicales transmitidos de generación en generación y son un sello sonoro de la identidad de Villa Abecia.</p>
+                    <p data-lang="en" style="display:none">The siku band of Villa Abecia is an ancestral musical expression that accompanies the town's festivals and processions, from the Feast of Our Lady of the Rosary to the Feast of the Cross and Carnival. Their panpipe (siku) melodies fill the streets and announce celebrations, bringing together communities like Jailia and Colpanayoc for demonstrations and processions. These groups, in addition to providing entertainment, preserve musical knowledge passed down through generations and are a hallmark of Villa Abecia's identity.</p>
+                </div>
+                <div class="tradition-card">
+                    <div class="tradition-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 data-lang="es">Feria del Vino y la Uva</h3>
+                    <h3 data-lang="en" style="display:none">Wine and Grape Fair</h3>
+                    <p data-lang="es">Cada año, Villa Abecia celebra su Feria del Vino y la Uva, un evento que reúne a productores locales para mostrar la calidad de sus vinos, singanis y productos derivados de la uva. Es una festividad llena de sabor, música y tradición, donde el visitante puede disfrutar de la esencia vitivinícola del valle villabicense.</p>
+                    <p data-lang="en" style="display:none">Every year, Villa Abecia celebrates its Wine and Grape Fair, an event that brings together local producers to showcase the quality of their wines, singani, and grape-based products. It's a festival full of flavor, music, and tradition, where visitors can experience the essence of winemaking in the Villavicencio Valley.</p>
+                </div>
+                <div class="tradition-card">
+                    <div class="tradition-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3 data-lang="es">Vendimia</h3>
+                    <h3 data-lang="en" style="display:none">Vintage</h3>
+                    <p data-lang="es">La Vendimia es una de las celebraciones más esperadas en Villa Abecia, donde las familias villavicenses se unen para cosechar la uva y rendir homenaje al fruto que da vida a sus reconocidos vinos y singanis. Durante esta fiesta se realizan desfiles, danzas típicas, música y degustaciones de vino, resaltando la tradición vitivinícola y el espíritu trabajador del pueblo.</p>
+                    <p data-lang="en" style="display:none">The grape harvest festival is one of the most anticipated celebrations in Villa Abecia, where local families come together to harvest the grapes and pay homage to the fruit that gives life to their renowned wines and singani. During this festival, parades, traditional dances, music, and wine tastings take place, highlighting the winemaking tradition and the hardworking spirit of the town.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">ATRACTIVOS TURISTICOS</h2>
+                <h2 data-lang="en" style="display:none">TOURIST ATTRACTIONS</h2>
+                <p data-lang="es">Los mejores lugares turisticos que puedes conocer.</p>
+                <p data-lang="en" style="display:none">The best tourist places you can visit.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src=".\\imagenes\pozas1.jpg" alt="Paisaje natural">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">Valnearios naturales</h4>
+                        <h4 data-lang="en" style="display:none">Natural Landscapes</h4>
+                        <p data-lang="es">Las Pozas de Villa Abecia son un paraíso natural formado por aguas cristalinas que descienden entre rocas rojizas y vegetación nativa, a pocos minutos del centro del pueblo. Este hermoso rincón del valle de los Cintis ofrece un espacio perfecto para disfrutar de la tranquilidad</p>
+                        <p data-lang="en" style="display:none">Beautiful valleys and mountains surrounding Villa Abecia</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src=".\\imagenes\salamanca1.jpeg" alt="Arquitectura local">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">La cueva de La salamanca</h4>
+                        <h4 data-lang="en" style="display:none">The cave of La Salamanca</h4>
+                        <p data-lang="es">Un sitio arqueológico con pinturas rupestres ubicado en la comunidad de Higuerayoc, cercano a Villa Abecia. Una mezcla de historia, naturaleza y aventura.</p>
+                        <p data-lang="en" style="display:none">An archaeological site with cave paintings located in the community of Higuerayoc, near Villa Abecia. A blend of history, nature, and adventure.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src=".\\imagenes\mirador.jpeg" alt="Gastronomía típica">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">El Mirador del Cañon colorado de Los Cintis </h4>
+                        <h4 data-lang="en" style="display:none">The Lookout of the Colorado Canyon of Los Cintis</h4>
+                        <p data-lang="es">Desde este mirador se observa el espectacular valle y el llamado “Cañón Colorado de Cinti”. Lugar perfecto para fotos panorámicas y para apreciar la magnitud del paisaje. </p>
+                        <p data-lang="en" style="display:none">From this viewpoint, you can see the spectacular valley and the so-called "Cinti Red Canyon." It's the perfect place for panoramic photos and to appreciate the magnitude of the landscape.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src=".\\imagenes\pinturas.jpeg" alt="Festividades culturales">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">Pinturas rupestras</h4>
+                        <h4 data-lang="en" style="display:none">Cave paintings</h4>
+                        <p data-lang="es">Las pinturas rupestres de Villa Abecia, ubicadas en Higuerayoc, muestran figuras humanas, animales y símbolos ancestrales, conectando a los visitantes con la historia y la tradición villabicense.</p>
+                        <p data-lang="en" style="display:none">The cave paintings of Villa Abecia, located in Higuerayoc, show human figures, animals and ancestral symbols, connecting visitors with the history and tradition of Villa Abecia.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src=".\\imagenes\vinedos.jpeg" alt="Festividades culturales">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">Bodegas y Viñedos</h4>
+                        <h4 data-lang="en" style="display:none">Wineries and Vineyards</h4>
+                        <p data-lang="es">La vitivinicultura es parte esencial del pueblo: viñedos, bodegas familiares y la tradición del vino hacen de Villa Abecia un destino especial para los amantes del enoturismo.</p>
+                        <p data-lang="en" style="display:none">Winemaking is an essential part of the village: vineyards, family wineries and the tradition of wine make Villa Abecia a special destination for wine tourism lovers.</p>
+                    </div>
+                </div> 
+
+                <div class="gallery-item">
+                   <!-- <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artesanías">-->
+                    <img src=".\\imagenes\murales.jpeg" alt="Comidas">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">Murales de Villa Abecia</h4>
+                        <h4 data-lang="en" style="display:none">Murals of Villa Abecia</h4>
+                        <p data-lang="es">Las calles de Villa Abecia se llenan de arte reciente: murales que reflejan la identidad cultural, los vinos, las pozas y la tradición local, convirtiéndose en un atractivo cultural urbano.</p>
+                        <p data-lang="en" style="display:none">The streets of Villa Abecia are filled with recent art: murals that reflect the cultural identity, the wines, the pools and the local tradition, becoming an urban cultural attraction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">VIDEOS DE VILLA ABECIA</h2>
+                <h2 data-lang="en" style="display:none">VIDEOS OF VILLA ABECIA</h2>
+                <p data-lang="es">Descubre nuestra comunidad a través de estos videos</p>
+                <p data-lang="en" style="display:none">Discover our community through these videos</p>
+            </div>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- Reemplaza con tu video -->
+                        <video controls poster=".\\imagenes\villa.jpg">
+                            <source src=".\\imagenes\video1.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento video.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3 data-lang="es">Recorrido Turístico</h3>
+                        <h3 data-lang="en" style="display:none">Tourist Tour</h3>
+                        <p data-lang="es">Un paseo por los principales atractivos de Villa Abecia</p>
+                        <p data-lang="en" style="display:none">A walk through the main attractions of Villa Abecia</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- Reemplaza con tu video -->
+                        <video controls poster=".\\imagenes\carnaval.jpg">
+                            <source src=".\\imagenes\video2.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento video.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3 data-lang="es">El Arte de la Artesanía</h3>
+                        <h3 data-lang="en" style="display:none">The Art of Craftsmanship</h3>
+                        <p data-lang="es">Proceso de creación de nuestras artesanías tradicionales</p>
+                        <p data-lang="en" style="display:none">Creation process of our traditional crafts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">Contacto</h2>
+                <h2 data-lang="en" style="display:none">Contact</h2>
+                <p data-lang="es">¿Quieres saber más sobre Villa Abecia? ¡Contáctanos!</p>
+                <p data-lang="en" style="display:none">Do you want to know more about Villa Abecia? Contact us!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-lang="es">Información de Contacto</h3>
+                    <h3 data-lang="en" style="display:none">Contact Information</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> <span data-lang="es">Villa Abecia, Chuquisaca, Bolivia</span><span data-lang="en" style="display:none">Villa Abecia, Chuquisaca, Bolivia</span></p>
+                        <p><i class="fas fa-phone"></i> <span>+591 64211010 68655837</span></p>
+                        <p><i class="fas fa-envelope"></i> <span>alisson.rios@gmail.com noelia.rodriguez@gmail.com</span></p>
+                        <p><i class="fas fa-clock"></i> <span data-lang="es">Lunes a Viernes: 8:00 - 18:00</span><span data-lang="en" style="display:none">Monday to Friday: 8:00 - 18:00</span></p>
+                    </div>
+                    <h3 data-lang="es">Síguenos en redes sociales</h3>
+                    <h3 data-lang="en" style="display:none">Follow us on social media</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 data-lang="es">Envíanos un Mensaje</h3>
+                    <h3 data-lang="en" style="display:none">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-lang="es">Nombre completo</label>
+                            <label for="name" data-lang="en" style="display:none">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-lang="es">Correo electrónico</label>
+                            <label for="email" data-lang="en" style="display:none">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" data-lang="es">Asunto</label>
+                            <label for="subject" data-lang="en" style="display:none">Subject</label>
+                            <select id="subject" required>
+                                <option value="" data-lang="es">Selecciona un asunto</option>
+                                <option value="" data-lang="en" style="display:none">Select a subject</option>
+                                <option value="turismo" data-lang="es">Información turística</option>
+                                <option value="turismo" data-lang="en" style="display:none">Tourist information</option>
+                                <option value="cultura" data-lang="es">Eventos culturales</option>
+                                <option value="cultura" data-lang="en" style="display:none">Cultural events</option>
+                                <option value="otro" data-lang="es">Otro</option>
+                                <option value="otro" data-lang="en" style="display:none">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-lang="es">Mensaje</label>
+                            <label for="message" data-lang="en" style="display:none">Message</label>
+                            <textarea id="message" required data-lang="es" placeholder="Escribe tu mensaje aquí..."></textarea>
+                            <textarea id="message" required data-lang="en" style="display:none" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-lang="es">Enviar Mensaje</button>
+                        <button type="submit" class="btn" data-lang="en" style="display:none">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-lang="es">Villa Abecia</h3>
+                    <h3 data-lang="en" style="display:none">Villa Abecia</h3>
+                    <p data-lang="es">Un destino lleno de cultura, tradición y belleza natural en el corazón de Bolivia.</p>
+                    <p data-lang="en" style="display:none">A destination full of culture, tradition and natural beauty in the heart of Bolivia.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-lang="es">Enlaces Rápidos</h3>
+                    <h3 data-lang="en" style="display:none">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio" data-lang="es"><i class="fas fa-chevron-right"></i> Inicio</a><a href="#inicio" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#cultura" data-lang="es"><i class="fas fa-chevron-right"></i> Cultura</a><a href="#cultura" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Culture</a></li>
+                        <li><a href="#turismo" data-lang="es"><i class="fas fa-chevron-right"></i> Turismo</a><a href="#turismo" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Tourism</a></li>
+                        <li><a href="#tradiciones" data-lang="es"><i class="fas fa-chevron-right"></i> Tradiciones</a><a href="#tradiciones" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Traditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-lang="es">Recursos</h3>
+                    <h3 data-lang="en" style="display:none">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-lang="es"><i class="fas fa-chevron-right"></i> Guía del visitante</a><a href="#" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Visitor's Guide</a></li>
+                        <li><a href="#" data-lang="es"><i class="fas fa-chevron-right"></i> Calendario de eventos</a><a href="#" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                        <li><a href="#" data-lang="es"><i class="fas fa-chevron-right"></i> Alojamiento</a><a href="#" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Accommodation</a></li>
+                        <li><a href="#" data-lang="es"><i class="fas fa-chevron-right"></i> Transporte</a><a href="#" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Transportation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Villa Abecia - <span data-lang="es">Todos los derechos reservados</span><span data-lang="en" style="display:none">All rights reserved</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sistema de cambio de idioma
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageBtn = document.querySelector('.language-btn');
+            const languageOptions = document.querySelector('.language-options');
+            const currentLanguage = document.getElementById('current-language');
+            let currentLang = 'es';
+            
+            // Mostrar/ocultar opciones de idioma
+            languageBtn.addEventListener('click', function() {
+                languageOptions.classList.toggle('active');
+            });
+            
+            // Cambiar idioma
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                    languageOptions.classList.remove('active');
+                    
+                    // Actualizar opción activa
+                    document.querySelectorAll('.language-option').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            function changeLanguage(lang) {
+                currentLang = lang;
+                
+                // Actualizar botón de idioma
+                if (lang === 'es') {
+                    currentLanguage.textContent = 'Español';
+                } else {
+                    currentLanguage.textContent = 'English';
+                }
+                
+                // Mostrar/ocultar elementos según el idioma
+                document.querySelectorAll('[data-lang]').forEach(element => {
+                    if (element.getAttribute('data-lang') === lang) {
+                        element.style.display = '';
+                    } else {
+                        element.style.display = 'none';
+                    }
+                });
+                
+                // Actualizar placeholders de formularios
+                const messageTextareas = document.querySelectorAll('textarea[data-lang]');
+                messageTextareas.forEach(textarea => {
+                    if (textarea.getAttribute('data-lang') === lang) {
+                        textarea.style.display = '';
+                    } else {
+                        textarea.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Menú móvil
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Formulario de contacto
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (currentLang === 'es') {
+                    alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+                } else {
+                    alert('Thank you for your message! We will contact you soon.');
+                }
+                contactForm.reset();
+            });
+            
+            // Smooth scrolling para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Reproducir videos en galería al hacer hover
+            document.querySelectorAll('.gallery-item video').forEach(video => {
+                video.addEventListener('mouseenter', function() {
+                    this.play();
+                });
+                
+                video.addEventListener('mouseleave', function() {
+                    this.pause();
+                    this.currentTime = 0;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
